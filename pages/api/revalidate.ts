@@ -9,7 +9,7 @@ export default async function handler(
   }
 
   try {
-    await res.unstable_revalidate("/");
+    await res.unstable_revalidate();
     return res.json({ revalidate: true });
   } catch (error) {
     return res.status(500).send("Error revalidating");
