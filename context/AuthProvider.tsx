@@ -15,9 +15,14 @@ export const useAuth = () => useContext(AuthContext);
 export default function AuthProvider({ children }: any) {
   const [user, setUser] = useState<any>();
   const loginWithTwitter = async () => {
-    const { user, session, error } = await supabaseAdmin.auth.signIn({
-      provider: "twitter",
-    });
+    const { user, session, error } = await supabaseAdmin.auth.signIn(
+      {
+        provider: "twitter",
+      },
+      {
+        redirectTo: "https://supabase-gallery-delta.vercel.app",
+      }
+    );
     setUser(user);
     console.log(error);
   };
