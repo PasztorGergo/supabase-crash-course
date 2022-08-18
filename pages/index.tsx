@@ -3,6 +3,7 @@ import type { NextPage } from "next";
 import Head from "next/head";
 import { Gallery } from "../components";
 import styles from "../styles/Home.module.css";
+import { supabaseAdmin } from "../utils/supabase";
 
 const Home: NextPage = ({ data }: any) => {
   return (
@@ -22,11 +23,6 @@ const Home: NextPage = ({ data }: any) => {
 export default Home;
 
 export async function getStaticProps() {
-  const supabaseAdmin = createClient(
-    process.env.API_URL || "",
-    process.env.SUPABASE_SECRET || ""
-  );
-
   const { data } = await supabaseAdmin.from("images").select("*").order("id");
 
   return {

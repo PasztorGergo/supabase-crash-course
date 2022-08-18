@@ -23,7 +23,7 @@ export default function BluryImage({
           objectFit="cover"
           src={imageSrc}
           className={cn(
-            "group-hover:opacity-75 duration ease-in-out",
+            "group-hover:opacity-75 duration-300 ease-in-out",
             isLoading
               ? "grayscale scale-110 blur-2xl"
               : "grayscale-0 scale-100 blur-none"
