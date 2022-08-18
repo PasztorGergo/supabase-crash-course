@@ -14,16 +14,16 @@ export const useAuth = () => useContext(AuthContext);
 
 export default function AuthProvider({ children }: any) {
   const [user, setUser] = useState<any>();
-  const loginWithTwitter = useCallback(async () => {
+  const loginWithTwitter = async () => {
     const { user, session, error } = await supabaseAdmin.auth.signIn({
       provider: "twitter",
     });
     setUser(user);
     console.log(error);
-  }, []);
-  const signOut = useCallback(async () => {
+  };
+  const signOut = async () => {
     const { error } = await supabaseAdmin.auth.signOut();
-  }, []);
+  };
 
   console.log(user);
 
