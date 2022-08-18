@@ -18,7 +18,8 @@ export default function AuthProvider({ children }: any) {
     const { user, session, error } = await supabaseAdmin.auth.signIn({
       provider: "twitter",
     });
-    user && setUser(user);
+    setUser(user);
+    console.log(error);
   }, []);
   const signOut = useCallback(async () => {
     const { error } = await supabaseAdmin.auth.signOut();
