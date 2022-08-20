@@ -4,11 +4,10 @@ import { useAuth } from "../../context/AuthProvider";
 import Link from "next/link";
 
 type Props = {
-  width?: number;
-  src?: string;
+  width?: string;
 };
 
-export default function Avatar({ width, src }: Props) {
+export default function Avatar({ width }: Props) {
   const { user, loginWithTwitter } = useAuth();
   return user ? (
     <Link href="/profile">
@@ -16,7 +15,7 @@ export default function Avatar({ width, src }: Props) {
         className={`aspect-w-1 aspect-h-1 w-12 overflow-hidden rounded-full bg-gray-200 cursor-pointer`}
       >
         <Image
-          src={src || "/user.png"}
+          src={user?.user_metadata.picture}
           layout="fill"
           objectFit="cover"
           className="hover:opacity-75 duration-300 ease-in-out rounded-full"
@@ -29,7 +28,7 @@ export default function Avatar({ width, src }: Props) {
       onClick={loginWithTwitter}
     >
       <Image
-        src={src || "/user.png"}
+        src="/user.png"
         layout="fill"
         objectFit="cover"
         className="hover:opacity-75 duration-300 ease-in-out rounded-full"

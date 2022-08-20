@@ -16,7 +16,7 @@ export default function BluryImage({
 
   return (
     <a href={href} className="group">
-      <div className="aspect-square xl:aspect-w-7 xl:aspect-h-8 w-full overflow-hidden rounded-lg bg-gray-200">
+      <div className="aspect-w-1 aspect-h-1 xl:aspect-w-7 xl:aspect-h-8 w-full overflow-hidden rounded-lg bg-gray-200">
         <Image
           alt={name}
           layout="fill"

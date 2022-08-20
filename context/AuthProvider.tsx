@@ -20,18 +20,22 @@ export default function AuthProvider({ children }: any) {
         provider: "twitter",
       },
       {
-        redirectTo: "https://supabase-gallery-delta.vercel.app",
+        redirectTo: "http://localhost:3000",
+        //redirectTo: "https://supabase-gallery-delta.vercel.app",
       }
     );
-    setUser(user);
-    console.log(error);
   };
   const signOut = async () => {
     const { error } = await supabaseAdmin.auth.signOut();
   };
+  const uploadTweet = async (tweetURL: string) => {
+    await supabaseAdmin.from("images").insert({});
+  };
 
-  console.log(user);
+  useEffect(() => {
+    setUser(supabaseAdmin.auth.user());
+  }, []);
 
-  const value = { user, loginWithTwitter, signOut };
+  const value = { user, loginWithTwitter, signOut, uploadTweet };
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }
