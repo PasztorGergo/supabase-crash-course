@@ -8,7 +8,9 @@ const nextConfig = {
     API_URL: process.env.API_URL,
     REVALIDATE: process.env.REVALIDATE,
   },
-  images: { domains: ["pbs.twimg.com"] },
+  images: {
+    domains: ["pbs.twimg.com", "www.spacex.com", "static-assets.tesla.com"],
+  },
 };
 
 module.exports = nextConfig;
